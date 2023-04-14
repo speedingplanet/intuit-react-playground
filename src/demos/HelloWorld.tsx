@@ -23,7 +23,9 @@ function HelloWorld({ userName }: HelloWorldProps) {
 
 		// Modern JS, use the "nullish coalescing" operator: ??
 		// is userName either null or undefined? Then use 'everybody'
-		<div>Hello, {userName ?? 'everybody'}! The sum of 2 and 5 is {2 + 5}</div>
+		<div>
+			Hello, {userName ?? 'everybody'}! The sum of 2 and 5 is {2 + 5}
+		</div>
 	);
 }
 
