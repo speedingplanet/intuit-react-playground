@@ -19,7 +19,9 @@ interface StudentDetailProps {
 }
 
 // function StudentDetail(props: StudentDetailProps) {
-function StudentDetail({ firstName, lastName }: StudentDetailProps) {
+// Lab 01: function StudentDetail({ firstName, lastName }: StudentDetailProps) {
+// Exported for Lab 2 testing purposes
+export	function StudentDetail({ firstName, lastName }: StudentDetailProps) {
 	return (
 		// <p>The student is {props.firstName} {props.lastName} </p>
 		<p>
