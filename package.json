@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "rest": "json-server --watch --port 8000 data/all-data.json"
+    "rest": "json-server --watch --port 8000 data/all-data.json",
+		"test": "jest",
+		"test:labs": "jest --testPathPattern Lab"
   },
   "dependencies": {
     "eslint-config-standard-with-typescript": "^34.0.1",
