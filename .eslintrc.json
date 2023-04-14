@@ -72,6 +72,14 @@
 		"@typescript-eslint/explicit-function-return-type": ["off"],
 		"@typescript-eslint/promise-function-async": ["off"],
 		"@typescript-eslint/triple-slash-reference": "off",
+		"@typescript-eslint/strict-boolean-expressions": [
+			"error",
+			{ "allowNullableObject": true, "allowNullableBoolean": true, "allowNullableString": true }
+		],
+		"@typescript-eslint/restrict-template-expressions": [
+			"error",
+			{ "allowNullish": true }
+		],
 		"react/jsx-no-target-blank": "off"
 	},
 	"ignorePatterns": ["node_modules"]
