@@ -23,7 +23,7 @@ routes.set(
 routes.set(
 	{
 		path: 'hello-world',
-		element: <HelloWorld />,
+		element: <HelloWorld userName="June" />,
 	},
 	'Hello World'
 );
