@@ -9,7 +9,7 @@ test('No React test', function () {
 
 test('Smoke test', () => {
 	render(<HelloWorld />);
-	const helloEl = screen.getByText(/Hello/);
+	const helloEl = screen.getByText(/Hello, everybody!/);
 	expect(helloEl)
 		.toBeInTheDocument();
 });
