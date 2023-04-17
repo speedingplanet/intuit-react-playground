@@ -4,6 +4,7 @@ import OurExperiment from './OurExperiment';
 import ObjectAsProps from './ObjectAsProps';
 import SelectableMovieDetails from './SelectableMovieDetails';
 import EventHandling from './EventHandling';
+import CustomEvents from './CustomEvents';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -53,6 +54,14 @@ routes.set(
 		element: <EventHandling />,
 	},
 	'Event Handling'
+);
+
+routes.set(
+	{
+		path: 'custom-events',
+		element: <CustomEvents />,
+	},
+	'Custom Events'
 );
 
 export { routes };
