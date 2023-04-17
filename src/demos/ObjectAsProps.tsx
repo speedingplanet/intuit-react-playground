@@ -32,7 +32,7 @@ export function MovieDetails(props: MovieDetailsProps) {
 		<ul>
 			<li>Title: {title}</li>
 			<li>Year: {year}</li>
-			<li>Director: {director}</li>
+			<li>Director: {Array.isArray(director) ? director.join(', ') : director}</li>
 			{/* Arrays have a join method that converts them to a string */}
 			<li>Writers: {writer.join(', ')}</li>
 			<li>Rating: {rating}</li>
