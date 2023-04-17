@@ -52,6 +52,7 @@ Build a test for Lab03.tsx
 - Import the correct dependencies
   - If you want to test against *your* code, import from Lab03.tsx
   - If you want to test against the *solution* to Lab03, use Lab04.tsx
+- You'll need some dummy data to test against. Take a look at `data/all-data.mjs` for examples.
 - Write a smoke test (does the component load, period)
 - Write a test that checks to see if the expected text is in the document 
   (i.e. are any/some/most/all? of the values from the Student object rendering correctly?)

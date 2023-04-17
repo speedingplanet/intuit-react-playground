@@ -16,7 +16,7 @@ export default function Lab04() {
 
 	return (
 		<section>
-			<h3>Lab 3</h3>
+			<h3>Lab 4</h3>
 			<StudentDetail student={exampleStudent} />
 		</section>
 	);
@@ -29,7 +29,7 @@ interface Student {
 	email: string;
 	phoneNumber: string;
 	city: string;
-	province: string;
+	province: string | null;
 	country: string;
 	postalCode: string;
 	id: number;
@@ -39,7 +39,7 @@ interface StudentDetailProps {
 	student: Student;
 }
 
-function StudentDetail(props: StudentDetailProps) {
+export function StudentDetail(props: StudentDetailProps) {
 	let {
 		firstName, lastName, province, city, country, dateOfBirth, email, postalCode,
 	} = props.student;
@@ -47,7 +47,7 @@ function StudentDetail(props: StudentDetailProps) {
 		<div className="card">
 			<div className="card-body">
 				<div className="card-title">
-					{firstName} {lastName}
+					<h5>{firstName} {lastName}</h5>
 				</div>
 			</div>
 			<ul className="list-group list-group-flush">
