@@ -52,9 +52,59 @@ Build a test for Lab03.tsx
 - Import the correct dependencies
   - If you want to test against *your* code, import from Lab03.tsx
   - If you want to test against the *solution* to Lab03, use Lab04.tsx
-- You'll need some dummy data to test against. Take a look at `data/all-data.mjs` for examples.
+- You'll need some dummy data to test against. Take a look at `data/all-data.ts` for examples.
 - Write a smoke test (does the component load, period)
 - Write a test that checks to see if the expected text is in the document 
   (i.e. are any/some/most/all? of the values from the Student object rendering correctly?)
 - Run the tests via `npm run test:labs`
 
+## Lab 5: Event handling
+
+Setting up event handlers in a component
+
+- Working in Lab05.tsx
+- Set up and export a component called `PagerBar`. 
+  - No props
+  - Renders two buttons "Previous" and "Next"
+  - Clicking on "Previous" logs to the console "You clicked on the previous button"
+  - Clicking on "Next" logs to the console "You clicked on the next button"
+- In the `Lab05` component, render `PagerBar` component. 
+- Go to /labs/lab-05 to see what the results look like
+
+## Lab 6: Custom events
+
+Creating custom events in our component and then calling those custom events.
+
+- Working in Lab06.tsx.
+- The overall goal is to turn `PagerBar` into a component that has two custom events `clickPreviousButton` and `clickNextButton`
+  - Create a `PagerBarProps` interface with two props:
+    - `clickPreviousButton` which is a function that takes no arguments and returns nothing
+    - `clickNextButton` same as above
+  - Assign the Props to `PagerBar`
+  - Hook up the custom events to be called when the Next and Previous buttons are clicked on
+- Move the `handlePreviousClick` and `handleNextClick` event handlers *OUT* of `PagerBar` and into `Lab06`. 
+- Pass those event handlers into `PagerBar` in the return statement for `Lab06`
+  - Consider updating the event handler to say something a little different, so that it's clear that it's being called.
+- Go to /labs/lab-06 to see what the results look like.
+
+## Lab 7: Testing custom events
+
+- Name the test file correctly. MUST INCLUDE THE WORD "Lab".
+- Import the correct dependencies
+  - If you want to test against *your* code, import from Lab06.tsx
+  - If you want to test against the *solution* to Lab06, use Lab07.tsx
+  - You'll need `userEvent` from `@testing-library/user-event`
+- Setup
+  - declare variables for `handlePreviousClick` and `handleNextClick`
+  - Give them the appropriate type (`../common/common-types.ts` has a suggestion)
+  - Create a `beforeEach` that will set up both as Jest mocks
+- Write a smoke test that renders and clicks on the buttons in the component
+  - No actual `expect` calls, just make sure it doesn't break
+  - Remember if you use the `await` keyword before `user.click()`, you'll need to label 
+    the function as `async`
+- Write a test for the "Previous" button
+  - Pass in `handlePreviousClick` as the event handler
+  - Use `user-event` to trigger a click on the "Previous" button
+  - Verify that the Jest mock has been called and has been called only once
+- Write a test for the "Next" button
+  - Pretty much the same as for the "Previous" button
