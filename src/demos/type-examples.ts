@@ -54,3 +54,17 @@ type CircularCar = Car & Circle;
 interface ICircularCar extends Car, Circle {
 	someOtherProp: string;
 }
+
+// Typing a function
+function add(a: number, b: number): number {
+	return a + b;
+}
+// Compare to Java: number add(number x, number y) {}
+
+// Function type definition
+type MathFunction = (x: number, y: number) => number;
+
+// Assign the function type to a variable
+let multiply: MathFunction = function (i, j) {
+	return i * j;
+};
