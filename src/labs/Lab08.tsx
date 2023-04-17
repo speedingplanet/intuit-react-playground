@@ -1,12 +1,12 @@
 import { type NoOpFunction } from '../common/common-types';
 
-export default function Lab07() {
+export default function Lab08() {
 	let handlePreviousClick = () => {
-		console.log('Lab07: You clicked on the previous button');
+		console.log('Lab08: You clicked on the previous button');
 	};
 
 	let handleNextClick = () => {
-		console.log('Lab07: You clicked on the next button');
+		console.log('Lab08: You clicked on the next button');
 	};
 
 	return (
