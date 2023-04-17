@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Lab03() {
+export default function Lab04() {
 	let exampleStudent = {
 		firstName: 'Christopher',
 		lastName: 'Smith',
@@ -16,7 +16,7 @@ export default function Lab03() {
 
 	return (
 		<section>
-			<h3>Lab 3</h3>
+			<h3>Lab 4</h3>
 			<StudentDetail student={exampleStudent} />
 		</section>
 	);

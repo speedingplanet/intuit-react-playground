@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import Lab01, { StudentDetail } from './Lab01';
+import Lab02, { StudentDetail } from './Lab02';
 
 test('Smoke test', () => {
-	render(<Lab01 />);
+	render(<Lab02 />);
 	let labElement = screen.getByText(/The student is/i);
 	expect(labElement).not.toBeNull();
 	expect(labElement)
