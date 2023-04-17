@@ -3,6 +3,7 @@ import HelloWorld from './HelloWorld';
 import OurExperiment from './OurExperiment';
 import ObjectAsProps from './ObjectAsProps';
 import SelectableMovieDetails from './SelectableMovieDetails';
+import EventHandling from './EventHandling';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -44,6 +45,14 @@ routes.set(
 		element: <SelectableMovieDetails />,
 	},
 	'Selectable Movie Details (crazy typing)'
+);
+
+routes.set(
+	{
+		path: 'event-handling',
+		element: <EventHandling />,
+	},
+	'Event Handling'
 );
 
 export { routes };
