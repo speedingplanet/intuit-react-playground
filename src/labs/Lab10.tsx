@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { students } from '../data/all-data';
+import { students } from '../data/all-data-typed';
 import type { Student, NoOpFunction } from '../common/common-types';
 
 export default function Lab10() {
