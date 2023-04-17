@@ -9,8 +9,8 @@
     "preview": "vite preview",
     "rest": "json-server --watch --port 8000 data/all-data.json",
 		"test": "jest",
-		"test:demos": "jest --testPathPattern demos",
-		"test:labs": "jest --testPathPattern Lab"
+		"test:demos": "jest --testPathPattern=demos",
+		"test:labs": "jest --testPathPattern=Lab"
   },
   "dependencies": {
     "lodash": "^4.17.21",
