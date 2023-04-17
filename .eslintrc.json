@@ -57,6 +57,7 @@
 		],
 		"object-property-newline": ["error", { "allowAllPropertiesOnSameLine": false }],
 		"prefer-const": "off",
+		"prefer-regex-literals": "off",
 		"semi": "off",
 		"@typescript-eslint/semi": ["error", "always"],
 		"quotes": "off",
