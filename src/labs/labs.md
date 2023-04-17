@@ -108,3 +108,30 @@ Creating custom events in our component and then calling those custom events.
   - Verify that the Jest mock has been called and has been called only once
 - Write a test for the "Next" button
   - Pretty much the same as for the "Previous" button
+
+## Lab 8: State
+
+Now we want to render a message to the browser on an event
+
+- Working in `Lab08.tsx` (which is a solution for `Lab07.tsx`.)
+- You're going to use a string as a piece of state in this component
+- Call `useState` setting up a state property called `message`
+- Update the return of `Lab08` to include a div where the `message` property will print to. Probably either above or below `PagerBar`. 
+- Update the event handlers to call `setMessage` with a new message, instead of calling `console.log`
+- Go to /labs/lab-08 to see what the results look like.
+
+## Lab 9: Iterative state
+
+What if we wanted to use state to track progress through an array?
+
+- Working in `Lab09.tsx`.
+- The "Next" and "Previous" buttons should now move through the array `words`.
+- You'll need to update the following
+  - `handlePreviousClick` should display the previous word, unless it's at the beginning of the array
+  - `handleNextClick` should display the next word, unless it's at the end of the array
+  - You could use the index of the word, or the word itself, to solve these issues
+  - The `return` statement in `Lab09` should display the current word. 
+- Go to /labs/lab-09 to see what the results look like.
+- CHALLENGE!
+  - How would you refactor the code if the "Next" button should be disabled when there are no more words to display?
+  - What about the same thing for the "Previous" button?
