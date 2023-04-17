@@ -43,9 +43,10 @@ export function StudentDetail(props: StudentDetailProps) {
 	let {
 		firstName, lastName, province, city, country, dateOfBirth, email, postalCode,
 	} = props.student;
+
 	return (
 		<div className="card">
-			<div className="card-body">
+			<div className="card-body bg-primary text-white">
 				<div className="card-title">
 					<h5>{firstName} {lastName}</h5>
 				</div>
@@ -54,7 +55,7 @@ export function StudentDetail(props: StudentDetailProps) {
 				<li className="list-group-item">{email}</li>
 				<li className="list-group-item">Date of birth: {dateOfBirth}</li>
 				<li className="list-group-item">
-					{city}, {country !== 'UK' ? province : ''} {country}
+					{city}, {province ?? ''} {country}
 				</li>
 				<li className="list-group-item">{postalCode}</li>
 			</ul>

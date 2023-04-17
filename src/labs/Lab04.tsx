@@ -54,7 +54,7 @@ export function StudentDetail(props: StudentDetailProps) {
 				<li className="list-group-item">{email}</li>
 				<li className="list-group-item">Date of birth: {dateOfBirth}</li>
 				<li className="list-group-item">
-					{city}, {country !== 'UK' ? province : ''} {country}
+					{city}, {province ?? ''} {country}
 				</li>
 				<li className="list-group-item">{postalCode}</li>
 			</ul>
