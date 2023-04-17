@@ -5,6 +5,8 @@ import ObjectAsProps from './ObjectAsProps';
 import SelectableMovieDetails from './SelectableMovieDetails';
 import EventHandling from './EventHandling';
 import CustomEvents from './CustomEvents';
+import UsingState from './UsingState';
+import StateCounter from './StateCounter';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -62,6 +64,22 @@ routes.set(
 		element: <CustomEvents />,
 	},
 	'Custom Events'
+);
+
+routes.set(
+	{
+		path: 'using-state',
+		element: <UsingState />,
+	},
+	'Working with State'
+);
+
+routes.set(
+	{
+		path: 'state-counter',
+		element: <StateCounter />,
+	},
+	'State-based counter'
 );
 
 export { routes };
