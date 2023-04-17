@@ -18,9 +18,10 @@ In your browser, visit /labs/lab-01 and see what the results look like.
 
 Build a test for Lab02.tsx:
 
-- Lab02.tsx is just the solution for Lab01.tsx
 - Name the test file correctly. MUST INCLUDE THE WORD "Lab".
 - Import the correct dependencies
+  - If you want to test against *your* code, import from Lab01.tsx
+  - If you want to test against the *solution* to Lab01, use Lab02.tsx
 - Write a smoke test (does the component load, period)
 - Write a test that checks to see if the expected text is in the document 
   (that is, if you pass "John" and "Smith" as firstName and lastName, that should be in the document)
@@ -31,7 +32,7 @@ Build a test for Lab02.tsx:
 
 Upgrade our StudentDetail component to accept an entire object and render a better component
 
-- Work in Lab03.tsx, which is a finished version of Lab01.tsx.
+- Work in Lab03.tsx, which is also a finished version of Lab01.tsx.
 - Update the props for `StudentDetail` to accept a student object
   - You will likely have to define a `Student` object
 - Update `StudentDetail` to render all the details of a Student. 
@@ -49,6 +50,8 @@ Build a test for Lab03.tsx
 
 - Name the test file correctly. MUST INCLUDE THE WORD "Lab".
 - Import the correct dependencies
+  - If you want to test against *your* code, import from Lab03.tsx
+  - If you want to test against the *solution* to Lab03, use Lab04.tsx
 - Write a smoke test (does the component load, period)
 - Write a test that checks to see if the expected text is in the document 
   (i.e. are any/some/most/all? of the values from the Student object rendering correctly?)
