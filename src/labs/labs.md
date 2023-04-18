@@ -126,7 +126,8 @@ What if we wanted to use state to track progress through an array?
 
 - Working in `Lab09.tsx`.
 - The "Next" and "Previous" buttons should now move through the array `words`.
-- You'll need to update the following
+- You'll need to update the following:
+  - What should we track in state?
   - `handlePreviousClick` should display the previous word, unless it's at the beginning of the array
   - `handleNextClick` should display the next word, unless it's at the end of the array
   - You could use the index of the word, or the word itself, to solve these issues

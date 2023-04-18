@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useState } from 'react';
 import { type NoOpFunction } from '../common/common-types';
 
@@ -7,8 +8,6 @@ let words = [
 ];
 
 export default function Lab09() {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	let [index, setIndex] = useState(0);
 	let handlePreviousClick = () => {};
 
 	let handleNextClick = () => {};
