@@ -10,6 +10,7 @@ import StateCounter from './StateCounter';
 import ComponentCommunication from './ComponentCommunication';
 import IterativeContent from './IterativeContent';
 import SortableContent from './SortableContent';
+import IterativeList from './IterativeList';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -91,6 +92,14 @@ routes.set(
 		element: <ComponentCommunication />,
 	},
 	'Component communication'
+);
+
+routes.set(
+	{
+		path: 'iterative-list',
+		element: <IterativeList />,
+	},
+	'Movies (iterative list)'
 );
 
 routes.set(
