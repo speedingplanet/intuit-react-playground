@@ -8,12 +8,12 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "rest": "json-server --watch --port 8000 data/all-data.json",
-		"test": "jest",
-		"test:demos": "jest --testPathPattern=demos",
-		"test:labs": "jest --testPathPattern=Lab"
+    "test": "jest",
+    "test:demos": "jest --testPathPattern=demos",
+    "test:labs": "jest --testPathPattern=Lab"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0"
@@ -27,6 +27,7 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.5.0",
+    "@types/lodash": "^4.14.194",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
@@ -41,6 +42,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-testing-library": "^5.10.3",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "jsdom": "^21.1.1",
