@@ -1,4 +1,4 @@
-import UsingState, { ColorPicker, ColorBox } from './UsingState';
+import UsingState, { ColorPicker } from './UsingState';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
