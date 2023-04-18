@@ -135,3 +135,15 @@ What if we wanted to use state to track progress through an array?
 - CHALLENGE!
   - How would you refactor the code if the "Next" button should be disabled when there are no more words to display?
   - What about the same thing for the "Previous" button?
+
+## Lab 10: Putting it all together
+
+Let's build a student browser!
+
+- At the core, we're going to swap out the `words` array for an array of students.
+- Import `students` from `../data/all-data-typed`
+- Swap out display a word from `words` for a `StudentDetail` component.
+  - `StudentDetail` is already available at the bottom of `Lab10.tsx`.
+- What will you pass to `StudentDetail` to display a student?
+- How is that going to change when the event handlers are called?
+- Visit /labs/lab-10 to see if it works.
