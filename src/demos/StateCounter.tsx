@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function CounterState() {
-	let [counter, setCounter] = useState(0);
+	const [counter, setCounter] = useState(0);
 	// let counter = 0;
 
 	return (
@@ -18,8 +18,8 @@ export default function CounterState() {
 							<button
 								className="btn btn-primary me-3"
 								onClick={() => {
-									// setCounter(counter + 1);
-									setCounter((counter) => counter + 1);
+									setCounter(counter + 1);
+									// setCounter((counter) => counter + 1);
 								}}>
                 Add
 							</button>
