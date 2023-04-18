@@ -71,7 +71,7 @@ export function StudentDetail(props: StudentDetailProps) {
 		props.student;
 	return (
 		<div className="card">
-			<div className="card-body">
+			<div className="card-body bg-primary text-white">
 				<div className="card-title">
 					<h5>
 						{firstName} {lastName}
