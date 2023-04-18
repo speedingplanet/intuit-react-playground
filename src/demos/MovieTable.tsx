@@ -41,7 +41,7 @@ export function MovieBody({ movies, columns }: MovieTableProps) {
 				<MovieRow
 					key={movie.id}
 					movie={movie}
-					columns={columns.map((c) => c.field)}
+					fields={columns.map((c) => c.field)}
 				/>
 			))}
 		</>
@@ -50,13 +50,13 @@ export function MovieBody({ movies, columns }: MovieTableProps) {
 
 interface MovieRowProps {
 	movie: Movie;
-	columns: Array<keyof Movie>;
+	fields: Array<keyof Movie>;
 }
 
-export function MovieRow({ movie, columns }: MovieRowProps) {
+export function MovieRow({ movie, fields }: MovieRowProps) {
 	return (
 		<>
-			{columns.map((field) => (
+			{fields.map((field) => (
 				<div
 					data-testid={`movie-${field}-${movie.id}`}
 					className="movie-row"

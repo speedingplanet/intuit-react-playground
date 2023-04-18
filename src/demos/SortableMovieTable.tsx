@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { orderBy } from 'lodash-es';
+import { orderBy } from 'lodash';
 import './demos.css';
 import type { Movie, SortConfig } from './demos-types';
 import { MovieBody, type MovieTableProps } from './MovieTable';
@@ -58,6 +58,7 @@ export function SortableMovieHeaders({
 					onClick={() => {
 						clickHeader(c.field);
 					}}
+					data-testid={`column-header-${c.field}`}
 					key={c.field}
 				>
 					{c.label}&nbsp;{getSortIndicator(c.field, sortConfig, ['⬆️', '⬇️'])}
