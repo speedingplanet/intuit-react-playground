@@ -25,7 +25,11 @@ export default function UsingState() {
 	);
 }
 
-export function ColorBox({ color }: { color: string }) {
+interface ColorBoxProps {
+	color: string;
+}
+
+export function ColorBox({ color }: ColorBoxProps) {
 	return (
 		<div
 			style={{
