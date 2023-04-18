@@ -14,7 +14,7 @@ type StudentNames = Pick<Student, 'firstName' | 'lastName' | 'id'>;
  *
  */
 
-export default function Lab11() {
+export default function Lab11Part2() {
 	let studentNames: StudentNames[] = students.map((student) => {
 		return {
 			firstName: student.firstName,
