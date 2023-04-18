@@ -3,6 +3,10 @@ import HelloWorld from './HelloWorld';
 import OurExperiment from './OurExperiment';
 import ObjectAsProps from './ObjectAsProps';
 import SelectableMovieDetails from './SelectableMovieDetails';
+import EventHandling from './EventHandling';
+import CustomEvents from './CustomEvents';
+import UsingState from './UsingState';
+import StateCounter from './StateCounter';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -44,6 +48,38 @@ routes.set(
 		element: <SelectableMovieDetails />,
 	},
 	'Selectable Movie Details (crazy typing)'
+);
+
+routes.set(
+	{
+		path: 'event-handling',
+		element: <EventHandling />,
+	},
+	'Event Handling'
+);
+
+routes.set(
+	{
+		path: 'custom-events',
+		element: <CustomEvents />,
+	},
+	'Custom Events'
+);
+
+routes.set(
+	{
+		path: 'using-state',
+		element: <UsingState />,
+	},
+	'Working with State'
+);
+
+routes.set(
+	{
+		path: 'state-counter',
+		element: <StateCounter />,
+	},
+	'State-based counter'
 );
 
 export { routes };

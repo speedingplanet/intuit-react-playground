@@ -32,7 +32,6 @@ export default function SelectableMovieDetailsWrapper() {
 
 interface SelectableMovieDetailsProps extends MovieDetailsProps {
 	showFields: MovieKeys;
-	// showFields: string[];
 }
 
 // export function SelectableMovieDetails(props: MovieDetailsProps & { showFields: MovieKeys }) {
