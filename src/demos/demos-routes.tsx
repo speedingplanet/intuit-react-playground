@@ -7,6 +7,9 @@ import EventHandling from './EventHandling';
 import CustomEvents from './CustomEvents';
 import UsingState from './UsingState';
 import StateCounter from './StateCounter';
+import ComponentCommunication from './ComponentCommunication';
+import IterativeContent from './IterativeContent';
+import SortableContent from './SortableContent';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -80,6 +83,30 @@ routes.set(
 		element: <StateCounter />,
 	},
 	'State-based counter'
+);
+
+routes.set(
+	{
+		path: 'component-communication',
+		element: <ComponentCommunication />,
+	},
+	'Component communication'
+);
+
+routes.set(
+	{
+		path: 'iterative-content',
+		element: <IterativeContent />,
+	},
+	'Iterative content'
+);
+
+routes.set(
+	{
+		path: 'sortable-content',
+		element: <SortableContent />,
+	},
+	'Iterative (sortable) content'
 );
 
 export { routes };

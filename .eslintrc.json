@@ -77,11 +77,14 @@
 			"error",
 			{ "allowNullableObject": true, "allowNullableBoolean": true, "allowNullableString": true }
 		],
-		"@typescript-eslint/restrict-template-expressions": [
-			"error",
-			{ "allowNullish": true }
-		],
+		"@typescript-eslint/restrict-template-expressions": ["error", { "allowNullish": true }],
 		"react/jsx-no-target-blank": "off"
 	},
+	"overrides": [
+		{
+			"files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+			"extends": ["plugin:testing-library/react"]
+		}
+	],
 	"ignorePatterns": ["node_modules"]
 }

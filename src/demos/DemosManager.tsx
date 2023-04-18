@@ -12,8 +12,8 @@ export default function DemosManager() {
 				level={2}
 				text="Demos Manager"
 			/>
-			<div className="row">
-				<div className="col-3">
+			<div className="row" style={{ height: '80vh' }}>
+				<div className="col-3" style={{ borderRight: '2px gray solid' }}>
 					<ul className="list-unstyled">
 						{routeConfig
 							.filter((r) => !r.index)
