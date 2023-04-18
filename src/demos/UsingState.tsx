@@ -32,6 +32,7 @@ interface ColorBoxProps {
 export function ColorBox({ color }: ColorBoxProps) {
 	return (
 		<div
+			data-testid="color-box"
 			style={{
 				height: '200px',
 				width: '200px',
