@@ -157,7 +157,7 @@ export function AddStudentWidget({ submitAction }: AddStudentWidgetProps) {
 					<input
 						type="text"
 						name="lastName"
-						id="add-first-name"
+						id="add-last-name"
 						className="form-control"
 					/>
 				</div>
