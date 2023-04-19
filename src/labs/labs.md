@@ -210,3 +210,49 @@ Before the sort, filter the `studentNames` array. Filter the array into a **NEW*
 
 Try it out!
 
+### Part 5: Adding a new Student
+
+#### Types: 
+
+- Add a type `StudentWithoutId`. It should be a `StudentNames` but without the `id` property. The `Omit` [utility type](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys) will be helpful here. 
+- Below the "Adding Students" section, add an interface for `AddStudentWidgetProps`. It should take one prop `submitAction` which will run when the form is submitted. What will it be passed? What will it return? 
+
+#### Component: AddStudentWidget
+
+You already have a starter form. It includes two fields (firstName and lastName) and a regular button. 
+
+When you click on the "Add student" button, do the following:
+
+- Gather the first name and last name into an object
+- Call `submitAction` passing it that object
+- Reset the form so its fields are cleared
+
+There are at least two ways to do this:
+
+- You could use controlled components to keep track of the data in the form. When the button is clicked, it calls the `submitAction` event handler with the appropriate information
+- You could leave the form widgets uncontrolled and use an `onSubmit` action to gather the data.
+  - Convert "Add Students" to a submit button (e.g. change its type)
+  - Don't forget to prevent the default behavior on submitting
+  - Probably use a FormData object to gather up all the data in the form
+
+It's up to you which way you prefer!
+
+#### State: Lab11Part4
+
+Add a state to track an update flag. Until we move `studentNames` into state (which we are *NOT* doing here), we need a cheap-and-easy way to tell React to re-render this component. 
+
+#### Event Handlers: Lab11Part4
+
+Add `handleAddStudent`. It should receive a student from `AddStudentWidget`. It needs to do the following:
+
+- Figure out what the next student id will be
+- Assign that to the passed-in student
+- Add the new student to the `studentNames` array
+- Update the update flag to provoke re-rendering
+- Don't forget to assign `handleAddStudent` to `AddStudentWidget` with the appropriate attribute.
+
+Try it out, see if it works. Note that if you have sorted the students list, the new name will appear already sorted.
+
+#### Challenge
+
+Is there a way to highlight the newly-added name? If you want to get very fancy, can you highlight it with a fading effect? 
