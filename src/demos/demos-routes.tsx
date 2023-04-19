@@ -11,6 +11,8 @@ import ComponentCommunication from './ComponentCommunication';
 import IterativeContent from './IterativeContent';
 import SortableContent from './SortableContent';
 import IterativeList from './IterativeList';
+import FormInputs from './FormInputs';
+import ControlledVsUncontrolled from './ControlledVsUncontrolled';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -116,6 +118,22 @@ routes.set(
 		element: <SortableContent />,
 	},
 	'Iterative (sortable) content'
+);
+
+routes.set(
+	{
+		path: 'form-inputs',
+		element: <FormInputs />,
+	},
+	'Form inputs (controlled fields)'
+);
+
+routes.set(
+	{
+		path: 'controlled-vs-uncontrolled',
+		element: <ControlledVsUncontrolled />,
+	},
+	'Forms (controlled vs uncontrolled)'
 );
 
 export { routes };
