@@ -16,6 +16,10 @@ type StudentNames = Pick<Student, 'firstName' | 'lastName' | 'id'>;
 type SortNames = Exclude<keyof StudentNames, 'id'>;
 
 export default function Lab11Part2() {
+	// If we wanted 'lastName' as the default sort field
+	// let [sortField, setSortField] = useState<SortNames>('lastName');
+
+	// If we want no default sort
 	let [sortField, setSortField] = useState<SortNames | undefined>();
 
 	let studentNames: StudentNames[] = students.map((student) => {
