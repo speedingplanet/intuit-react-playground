@@ -7,37 +7,54 @@ type StudentNames = Pick<Student, 'firstName' | 'lastName' | 'id'>;
 /*
  * Part 1: Render an ordered list of studentNames, displaying the first name and last name
  * Part 2: How can I sort by last name? First name?
- *
  * Part 3: What if I want to reverse the sort?
+ *
  * Part 4: How can I filter by last name?
  * Part 5: What if I want to add someone new to the list?
  *
  */
 
 type SortNames = Exclude<keyof StudentNames, 'id'>;
+type SortDirection = 'asc' | 'desc';
+interface SortConfig {
+	sortField?: SortNames;
+	sortDirection: SortDirection;
+}
 
-export default function Lab11Part2() {
-	let [sortField, setSortField] = useState<SortNames | undefined>();
+let studentNames: StudentNames[] = students.map((student) => {
+	return {
+		firstName: student.firstName,
+		lastName: student.lastName,
+		id: student.id,
+	};
+});
 
-	let studentNames: StudentNames[] = students.map((student) => {
-		return {
-			firstName: student.firstName,
-			lastName: student.lastName,
-			id: student.id,
-		};
-	});
+export default function Lab11Part3() {
+	let [sortConfig, setSortConfig] = useState<SortConfig>({ sortDirection: 'asc' });
 
 	let handleSortStudents = (field: SortNames) => {
-		setSortField(field);
+		if (field === sortConfig?.sortField && sortConfig.sortDirection === 'asc') {
+			setSortConfig({
+				...sortConfig,
+				sortDirection: 'desc',
+			});
+		} else {
+			setSortConfig({
+				sortField: field,
+				sortDirection: 'asc',
+			});
+		}
 	};
 
 	studentNames.sort((a, b) => {
 		// Does not sort if sortField is undefined
-		if (sortField === undefined) {
+		if (sortConfig.sortField === undefined) {
 			return 0;
 		}
-		return a[sortField].localeCompare(b[sortField]);
+		return a[sortConfig.sortField].localeCompare(b[sortConfig.sortField]);
 	});
+
+	if (sortConfig.sortDirection === 'desc') studentNames.reverse();
 
 	return (
 		<section>
@@ -50,7 +67,7 @@ export default function Lab11Part2() {
 							handleSortStudents('firstName');
 						}}
 					>
-						{sortField === 'firstName' && '☑️'} Sort by first name
+						<SortIndicator config={sortConfig} field={'firstName'} /> Sort by first name
 					</button>
 					&nbsp;
 					<button
@@ -59,7 +76,7 @@ export default function Lab11Part2() {
 							handleSortStudents('lastName');
 						}}
 					>
-						{sortField === 'lastName' && '☑️'} Sort by last name
+						<SortIndicator config={sortConfig} field={'lastName'} />  Sort by last name
 					</button>
 				</div>
 			</div>
@@ -71,6 +88,21 @@ export default function Lab11Part2() {
 			</div>
 		</section>
 	);
+}
+
+interface SortIndicatorProps {
+	config: SortConfig;
+	field: SortNames;
+}
+
+export function SortIndicator({ config, field }: SortIndicatorProps) {
+	if (config.sortField !== field) return null;
+
+	if (config.sortDirection === 'asc') {
+		return <span>⏫</span>;
+	} else {
+		return <span>⏬</span>;
+	}
 }
 
 interface StudentListProps {
