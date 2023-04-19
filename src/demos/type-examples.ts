@@ -68,3 +68,5 @@ type MathFunction = (x: number, y: number) => number;
 let multiply: MathFunction = function (i, j) {
 	return i * j;
 };
+
+export {};

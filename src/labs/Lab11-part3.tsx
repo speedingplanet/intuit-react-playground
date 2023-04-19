@@ -3,14 +3,14 @@ import { students } from '../data/all-data-typed';
 import { type Student } from '../common/common-types';
 
 /*
-* Part 1: Render an ordered list of studentNames, displaying the first name and last name
-* Part 2: How can I sort by last name? First name?
-* Part 3: What if I want to reverse the sort?
-*
-* Part 4: How can I filter by last name?
-* Part 5: What if I want to add someone new to the list?
-*
-*/
+ * Part 1: Render an ordered list of studentNames, displaying the first name and last name
+ * Part 2: How can I sort by last name? First name?
+ * Part 3: What if I want to reverse the sort?
+ *
+ * Part 4: How can I filter by last name?
+ * Part 5: What if I want to add someone new to the list?
+ *
+ */
 
 type StudentNames = Pick<Student, 'firstName' | 'lastName' | 'id'>;
 type SortNames = Exclude<keyof StudentNames, 'id'>;
@@ -45,13 +45,17 @@ export default function Lab11Part3() {
 		}
 	};
 
-	studentNames.sort((a, b) => {
-		// Does not sort if sortField is undefined
-		if (sortConfig.sortField === undefined) {
-			return 0;
-		}
-		return a[sortConfig.sortField].localeCompare(b[sortConfig.sortField]);
-	});
+	console.log('re-render');
+
+	if (sortConfig.sortField === undefined) {
+		console.log('no sort or reverse');
+	} else {
+		studentNames.sort((a, b) => {
+			console.log('sorting');
+			if (sortConfig.sortField === undefined) return 0;
+			return a[sortConfig.sortField].localeCompare(b[sortConfig.sortField]);
+		});
+	}
 
 	if (sortConfig.sortDirection === 'desc') studentNames.reverse();
 
@@ -66,7 +70,11 @@ export default function Lab11Part3() {
 							handleSortStudents('firstName');
 						}}
 					>
-						<SortIndicator config={sortConfig} field={'firstName'} /> Sort by first name
+						<SortIndicator
+							config={sortConfig}
+							field={'firstName'}
+						/>{' '}
+						Sort by first name
 					</button>
 					&nbsp;
 					<button
@@ -75,7 +83,11 @@ export default function Lab11Part3() {
 							handleSortStudents('lastName');
 						}}
 					>
-						<SortIndicator config={sortConfig} field={'lastName'} />  Sort by last name
+						<SortIndicator
+							config={sortConfig}
+							field={'lastName'}
+						/>{' '}
+						Sort by last name
 					</button>
 				</div>
 			</div>
