@@ -156,6 +156,19 @@ export function FullFormUncontrolled() {
 	);
 }
 
+/*
+ * Movie has id, director, writers, etc....
+ * We don't want the id field, so MovieWithoutId = Omit<Movie, 'id'>
+ * But, we also want to build a Movie as the user enters data.
+ * MovieWithoutId requires an object with {title: '...', director: '...', etc}
+ * So let's make those fields optional: OptionalMovieWithoutId = Partial<MovieWithoutId>
+ * Now every field on MovieWithoutId is optional (can be skipped if we want)
+ * {} is a value OptionalMovieWithoutId
+ * {title: 'Star Wars'} is a value OptionalMovieWithoutId
+ * {director: 'George Lucas', genres: ['sci fi']} is a value OptionalMovieWithoutId
+ * {rating: 3, year: 2022, title: 'Whatever'} is a value OptionalMovieWithoutId
+ *
+ */
 type MovieWithoutId = Partial<Omit<Movie, 'id'>>;
 export function FullFormControlled() {
 	let [movie, setMovie] = useState<MovieWithoutId>({});
