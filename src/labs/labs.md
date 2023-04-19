@@ -148,3 +148,33 @@ Let's build a student browser!
 - What will you pass to `StudentDetail` to display a student?
 - How is that going to change when the event handlers are called?
 - Visit /labs/lab-10 to see if it works.
+
+## Lab 11
+
+### Part 3: Reversing the sort
+
+Note that we've moved `studentNames` outside of the component.
+
+#### Types: 
+- Add a type `SortDirection` that can be either 'asc' or 'desc'
+- Add a type `SortConfig` that includes two properties: ``sortField``, which is optional and set to `SortNames`, and `sortDirection` which is, unsurprisingly `SortDirection`. 
+
+#### State:
+
+We will store sorting information in state. Change the `useState` call to return a `SortConfig` and a setter. The starting state should assume `sortDirection` is `asc` and have no `sortField`. Remember that you can give `useState` a type:
+
+```typescript
+let [person, setPerson] = useState<DBConnection>({firstName: 'John'})
+```
+
+#### Event Handlers: 
+
+Update `handleSortStudents` so that it sets the `SortConfig` state. What happens if we sort on `firstName` after sorting on `lastName`? What happens if we click on `firstName` again? Write logic around these cases.
+
+#### Component: 
+
+After sorting studentNames, reverse the sort if `SortConfig.sortDirection` is `desc`. 
+
+#### Challenge: 
+
+Update the sort indicator to indicate whether the sort is 'asc' or 'desc'. You could do this with a component or a function that returns some text.
