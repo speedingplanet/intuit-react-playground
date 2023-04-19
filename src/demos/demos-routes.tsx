@@ -15,6 +15,7 @@ import FormInputs from './FormInputs';
 import ControlledVsUncontrolled from './ControlledVsUncontrolled';
 import FetchingDataPromises from './FetchingDataPromises';
 import FetchingDataAsyncAwait from './FetchingDataAsyncAwait';
+import FullForm from './FullForm';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -136,6 +137,14 @@ routes.set(
 		element: <ControlledVsUncontrolled />,
 	},
 	'Forms (controlled vs uncontrolled)'
+);
+
+routes.set(
+	{
+		path: 'full-form',
+		element: <FullForm />,
+	},
+	'Full form (controlled vs uncontrolled)'
 );
 
 routes.set(
