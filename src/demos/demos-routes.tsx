@@ -13,6 +13,8 @@ import SortableContent from './SortableContent';
 import IterativeList from './IterativeList';
 import FormInputs from './FormInputs';
 import ControlledVsUncontrolled from './ControlledVsUncontrolled';
+import FetchingDataPromises from './FetchingDataPromises';
+import FetchingDataAsyncAwait from './FetchingDataAsyncAwait';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -134,6 +136,22 @@ routes.set(
 		element: <ControlledVsUncontrolled />,
 	},
 	'Forms (controlled vs uncontrolled)'
+);
+
+routes.set(
+	{
+		path: 'fetching-with-promises',
+		element: <FetchingDataPromises />,
+	},
+	'Fetching data with promises'
+);
+
+routes.set(
+	{
+		path: 'fetching-with-async-await',
+		element: <FetchingDataAsyncAwait />,
+	},
+	'Fetching data using async/await'
 );
 
 export { routes };
