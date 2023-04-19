@@ -237,11 +237,11 @@ There are at least two ways to do this:
 
 It's up to you which way you prefer!
 
-#### State: Lab11Part4
+#### State: Lab11Part5
 
 Add a state to track an update flag. Until we move `studentNames` into state (which we are *NOT* doing here), we need a cheap-and-easy way to tell React to re-render this component. 
 
-#### Event Handlers: Lab11Part4
+#### Event Handlers: Lab11Part5
 
 Add `handleAddStudent`. It should receive a student from `AddStudentWidget`. It needs to do the following:
 
