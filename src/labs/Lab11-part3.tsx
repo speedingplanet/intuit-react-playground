@@ -34,7 +34,12 @@ export default function Lab11Part3() {
 	let handleSortStudents = (field: SortNames) => {
 		if (field === sortConfig?.sortField && sortConfig.sortDirection === 'asc') {
 			setSortConfig({
+				// ...sortConfig results in this
+				// sortField: 'firstName',
+				// sortDirection: 'asc',
+
 				...sortConfig,
+				// And then we add
 				sortDirection: 'desc',
 			});
 		} else {
