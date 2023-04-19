@@ -50,12 +50,19 @@ export default function Lab11Part4() {
 		setLastNameFilter(filterText);
 	};
 
-	let re = new RegExp(lastNameFilter, 'i');
-	let displayNames = studentNames.filter(({ lastName }) => {
-		return re.test(lastName);
+	let reFilter = new RegExp(lastNameFilter, 'i');
+	let filteredStudents = studentNames.filter(({ lastName }) => {
+		return reFilter.test(lastName);
+
+		// return lastName.toUpperCase().indexOf(lastNameFilter.toUpperCase()) > -1
+
+		/*
+		return lastName.toUpperCase()
+			.includes(lastNameFilter.toUpperCase());
+			*/
 	});
 
-	displayNames.sort((a, b) => {
+	filteredStudents.sort((a, b) => {
 		// Does not sort if sortField is undefined
 		if (sortConfig.sortField === undefined) {
 			return 0;
@@ -63,7 +70,7 @@ export default function Lab11Part4() {
 		return a[sortConfig.sortField].localeCompare(b[sortConfig.sortField]);
 	});
 
-	if (sortConfig.sortDirection === 'desc') displayNames.reverse();
+	if (sortConfig.sortDirection === 'desc') filteredStudents.reverse();
 
 	return (
 		<section>
@@ -83,7 +90,7 @@ export default function Lab11Part4() {
 					<hr />
 				</div>
 				<div className="col">
-					<StudentList studentNames={displayNames} />
+					<StudentList studentNames={filteredStudents} />
 				</div>
 			</div>
 		</section>
