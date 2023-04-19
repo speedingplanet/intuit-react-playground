@@ -127,7 +127,7 @@ export function AddStudentWidget() {
 					<input
 						type="text"
 						name="lastName"
-						id="add-first-name"
+						id="add-last-name"
 						className="form-control"
 					/>
 				</div>
