@@ -5,6 +5,14 @@ export default function FormInputs() {
 	let [selectInput, setSelectInput] = useState('');
 	let [bootstrapInput, setBootstrapInput] = useState('');
 
+	let handleTextUpdate: React.FormEventHandler<HTMLInputElement> = (event) => {
+		// Validation?
+		// Auto complete?
+		// Send input off to an remote API?
+
+		setTextInput(event.currentTarget.value);
+	};
+
 	return (
 		<>
 			<div className="row">
@@ -27,7 +35,7 @@ export default function FormInputs() {
 							id="ex-text-input"
 							placeholder="placeholder text"
 							value={textInput}
-							onChange={(e) => setTextInput(e.currentTarget.value)}
+							onChange={handleTextUpdate}
 						/>
 					</div>
 				</div>

@@ -47,6 +47,9 @@ export function UncontrolledInput() {
 		event.preventDefault();
 		let form = event.currentTarget;
 		let data = new FormData(form);
+
+		// data.get(name of form field NOT id)
+		// Also, data.get has a weird return type
 		let localFirstName = data.get('uncontrolled-first-name') as string;
 		setFirstName(localFirstName);
 	};
