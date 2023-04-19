@@ -38,10 +38,6 @@ export default function Lab11Part3() {
 		return a[sortField].localeCompare(b[sortField]);
 	});
 
-	studentNames.sort((a, b) => {
-		return a.lastName.localeCompare(b.lastName);
-	});
-
 	return (
 		<section>
 			<div className="row">
