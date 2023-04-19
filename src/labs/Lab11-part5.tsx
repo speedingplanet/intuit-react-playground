@@ -4,13 +4,13 @@ import { students } from '../data/all-data-typed';
 import { type Student } from '../common/common-types';
 
 /*
-* Part 1: Render an ordered list of studentNames, displaying the first name and last name
+ * Part 1: Render an ordered list of studentNames, displaying the first name and last name
  * Part 2: How can I sort by last name? First name?
  * Part 3: What if I want to reverse the sort?
  * Part 4: How can I filter by last name?
  * Part 5: What if I want to add someone new to the list?
-*
-*/
+ *
+ */
 
 type StudentNames = Pick<Student, 'firstName' | 'lastName' | 'id'>;
 type SortNames = Exclude<keyof StudentNames, 'id'>;
@@ -27,11 +27,12 @@ let studentNames: StudentNames[] = students.map((student) => {
 		id: student.id,
 	};
 });
+type StudentWithoutId = Omit<StudentNames, 'id'>;
 
 export default function Lab11Part5() {
 	let [sortConfig, setSortConfig] = useState<SortConfig>({ sortDirection: 'asc' });
 	let [lastNameFilter, setLastNameFilter] = useState('');
-	let [updateFlag, setUpdateFlag] = useState(0);
+	let [latestStudent, setLatestStudent] = useState<StudentNames | null>(null);
 
 	let handleSortNames = (field: SortNames) => {
 		if (field === sortConfig?.sortField && sortConfig.sortDirection === 'asc') {
@@ -52,14 +53,14 @@ export default function Lab11Part5() {
 	};
 
 	let handleAddStudent = (student: StudentWithoutId) => {
-		let ids = studentNames.map(s => s.id);
+		let ids = studentNames.map((s) => s.id);
 		let nextId = Math.max(...ids) + 1;
 		let nextStudent: StudentNames = {
 			...student,
 			id: nextId,
 		};
 		studentNames.unshift(nextStudent);
-		setUpdateFlag(updateFlag + 1);
+		setLatestStudent(nextStudent);
 	};
 
 	let re = new RegExp(lastNameFilter, 'i');
@@ -94,11 +95,14 @@ export default function Lab11Part5() {
 					</div>
 					<hr />
 					<div>
-						<AddStudentWidget submitAction={handleAddStudent} />
+						<AddStudentControlledWidget submitAction={handleAddStudent} />
 					</div>
 				</div>
 				<div className="col">
-					<StudentList studentNames={displayNames} />
+					<StudentList
+						studentNames={displayNames}
+						latestStudent={latestStudent ?? undefined}
+					/>
 				</div>
 			</div>
 		</section>
@@ -110,12 +114,78 @@ export default function Lab11Part5() {
 Adding Students
 ===============================================================================
 */
-type StudentWithoutId = Omit<StudentNames, 'id'>;
 interface AddStudentWidgetProps {
 	submitAction: (student: StudentWithoutId) => void;
 }
 
-export function AddStudentWidget({ submitAction }: AddStudentWidgetProps) {
+export function AddStudentControlledWidget({ submitAction }: AddStudentWidgetProps) {
+	const [student, setStudent] = useState<Partial<StudentWithoutId>>({});
+	let updateStudent: React.FormEventHandler<HTMLInputElement> = (event) => {
+		let field = event.currentTarget.name;
+		let value = event.currentTarget.value;
+
+		setStudent({
+			...student,
+			[field]: value,
+		});
+	};
+
+	let handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+		event.preventDefault();
+		submitAction(student as StudentWithoutId);
+		setStudent({});
+	};
+
+	return (
+		<section>
+			<h5>Add a Student</h5>
+			<form onSubmit={handleSubmit}>
+				<div>
+					<label
+						htmlFor="add-first-name"
+						className="form-label"
+					>
+						First name:
+					</label>
+					<input
+						type="text"
+						name="firstName"
+						id="add-first-name"
+						className="form-control"
+						value={student.firstName ?? ''}
+						onChange={updateStudent}
+					/>
+				</div>
+				<div>
+					<label
+						htmlFor="add-last-name"
+						className="form-label"
+					>
+						Last name:
+					</label>
+					<input
+						type="text"
+						name="lastName"
+						id="add-last-name"
+						className="form-control"
+						value={student.lastName ?? ''}
+						onChange={updateStudent}
+					/>
+				</div>
+				<div className="mt-2">
+					<button
+						className="btn btn-sm btn-danger"
+						type="submit"
+					>
+						Add student
+					</button>
+				</div>
+			</form>
+		</section>
+	);
+}
+
+export function AddStudentUncontrolledWidget({ submitAction }: AddStudentWidgetProps) {
 	let handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
 		event.preventDefault();
 		let data = new FormData(event.currentTarget);
@@ -283,15 +353,23 @@ Student List
 */
 interface StudentListProps {
 	studentNames: StudentNames[];
+	latestStudent?: StudentNames;
 }
 
-export function StudentList({ studentNames }: StudentListProps) {
+let latestStudentStyle = {
+	backgroundColor: 'yellow',
+};
+
+export function StudentList({ studentNames, latestStudent }: StudentListProps) {
 	return (
 		<ol>
 			{studentNames.map(({
 				firstName, lastName, id,
 			}) => (
-				<li key={id}>
+				<li
+					key={id}
+					style={latestStudent && id === latestStudent.id ? latestStudentStyle : {}}
+				>
 					{firstName} {lastName}
 				</li>
 			))}
