@@ -175,6 +175,38 @@ Update `handleSortStudents` so that it sets the `SortConfig` state. What happens
 
 After sorting studentNames, reverse the sort if `SortConfig.sortDirection` is `desc`. 
 
+Try it out!
+
 #### Challenge: 
 
 Update the sort indicator to indicate whether the sort is 'asc' or 'desc'. You could do this with a component or a function that returns some text.
+
+### Part 4: Filtering by last name
+
+We've broken out features like sorting and filtering into their own components
+
+#### Types: 
+- Create an interface for `FilterStudentsWidget`. It should take one property `updateFilter` which is a custom event. What should the event handler be passed? What should it return?
+
+#### Component: FilterStudentsWidget
+
+Fill out the details of FilterStudentsWidget. You'll need a label and a text input field.
+
+#### Event Handlers: FilterStudentsWidget
+
+When the values in the text input field change, call `updateFilter` with the new value.
+
+#### State: Lab11Part4
+
+Add a `useState` call that will store the lastName filter.
+
+#### Event Handlers: Lab11Part4
+
+Create `handleUpdateFilter` so that it sets the `lastNameFilter` state. Pass `handleUpdateFilter` into `FilterStudentsWidget` with the appropriate attribute.
+
+#### Component: Lab11Part4
+
+Before the sort, filter the `studentNames` array. Filter the array into a **NEW** array (maybe call it `displayNames`?). Update the sort logic to work with the new array. Update the argument to `StudentList` to use the new array as well.
+
+Try it out!
+
