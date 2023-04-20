@@ -14,6 +14,7 @@ import { type Student } from '../common/common-types';
 
 type StudentNames = Pick<Student, 'firstName' | 'lastName' | 'id'>;
 type SortNames = Exclude<keyof StudentNames, 'id'>;
+type StudentWithoutId = Omit<StudentNames, 'id'>;
 type SortDirection = 'asc' | 'desc';
 interface SortConfig {
 	sortField?: SortNames;
@@ -27,7 +28,6 @@ let studentNames: StudentNames[] = students.map((student) => {
 		id: student.id,
 	};
 });
-type StudentWithoutId = Omit<StudentNames, 'id'>;
 
 export default function Lab11Part5() {
 	let [sortConfig, setSortConfig] = useState<SortConfig>({ sortDirection: 'asc' });
@@ -59,6 +59,16 @@ export default function Lab11Part5() {
 			...student,
 			id: nextId,
 		};
+
+		/*
+		 * Other viable options
+		 * Add to the end of the array:
+		 * studentNames.push(nextStudent)
+		 *
+		 * re-create the array with the new student
+		 * studentNames = [...studentNames, nextStudent]
+		 *
+		 */
 		studentNames.unshift(nextStudent);
 		setLatestStudent(nextStudent);
 	};
@@ -120,6 +130,7 @@ interface AddStudentWidgetProps {
 
 export function AddStudentControlledWidget({ submitAction }: AddStudentWidgetProps) {
 	const [student, setStudent] = useState<Partial<StudentWithoutId>>({});
+
 	let updateStudent: React.FormEventHandler<HTMLInputElement> = (event) => {
 		let field = event.currentTarget.name;
 		let value = event.currentTarget.value;
@@ -132,6 +143,9 @@ export function AddStudentControlledWidget({ submitAction }: AddStudentWidgetPro
 
 	let handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
 		event.preventDefault();
+
+		// HTML validation forces 'student' to have both firstName and lastName fields
+		// which meets the criteria for being a StudentWithoutId
 		submitAction(student as StudentWithoutId);
 		setStudent({});
 	};
@@ -152,6 +166,7 @@ export function AddStudentControlledWidget({ submitAction }: AddStudentWidgetPro
 						name="firstName"
 						id="add-first-name"
 						className="form-control"
+						required
 						value={student.firstName ?? ''}
 						onChange={updateStudent}
 					/>
@@ -168,6 +183,7 @@ export function AddStudentControlledWidget({ submitAction }: AddStudentWidgetPro
 						name="lastName"
 						id="add-last-name"
 						className="form-control"
+						required
 						value={student.lastName ?? ''}
 						onChange={updateStudent}
 					/>
