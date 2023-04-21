@@ -13,9 +13,12 @@
     "test:labs": "jest --testPathPattern=Lab"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.12",
+    "graphql": "^16.6.0",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.10.0"
   },
   "devDependencies": {

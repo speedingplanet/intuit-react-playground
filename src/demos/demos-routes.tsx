@@ -16,6 +16,7 @@ import ControlledVsUncontrolled from './ControlledVsUncontrolled';
 import FetchingDataPromises from './FetchingDataPromises';
 import FetchingDataAsyncAwait from './FetchingDataAsyncAwait';
 import FullForm from './FullForm';
+import FetchingDataReactQuery from './FetchingDataReactQuery';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -161,6 +162,14 @@ routes.set(
 		element: <FetchingDataAsyncAwait />,
 	},
 	'Fetching data using async/await'
+);
+
+routes.set(
+	{
+		path: 'fetching-with-react-query',
+		element: <FetchingDataReactQuery />,
+	},
+	'Fetching data using React Query'
 );
 
 export { routes };
