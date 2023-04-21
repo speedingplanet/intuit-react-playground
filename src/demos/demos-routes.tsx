@@ -18,6 +18,8 @@ import FetchingDataAsyncAwait from './FetchingDataAsyncAwait';
 import FullForm from './FullForm';
 import FetchingDataReactQuery from './FetchingDataReactQuery';
 import AddAMovie from './AddAMovie';
+import ApolloGraphql from './ApolloGraphql';
+import FetchingDataOnClick from './FetchingDataWithButton';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -159,6 +161,14 @@ routes.set(
 
 routes.set(
 	{
+		path: 'fetching-on-click',
+		element: <FetchingDataOnClick />,
+	},
+	'Fetching data on click'
+);
+
+routes.set(
+	{
 		path: 'fetching-with-async-await',
 		element: <FetchingDataAsyncAwait />,
 	},
@@ -171,6 +181,14 @@ routes.set(
 		element: <FetchingDataReactQuery />,
 	},
 	'Fetching data using React Query'
+);
+
+routes.set(
+	{
+		path: 'apollo-graphql',
+		element: <ApolloGraphql />,
+	},
+	'Fetching data with Apollo'
 );
 
 routes.set(

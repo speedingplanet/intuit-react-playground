@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import SortableMovieTable from './SortableMovieTable';
 import type { ColumnConfig } from './demos-types';
 import { type Movie } from '../data/all-data-typed';
@@ -23,19 +23,10 @@ let columns: Array<ColumnConfig<Movie>> = [
 	},
 ];
 
-export default function FetchingDataPromises() {
+export default function FetchingDataOnClick() {
 	const [movies, setMovies] = useState<Movie[]>([]);
 
-	/*
-	 * Fetches movies only once, at component load time
-	 * useEffect(what to do, [what to watch for changes])
-	 * what to watch for changes is important
-	 * useEffect(fn); No changes to watch for, runs every render
-	 * useEffect(fn, []); Watch for a change to the empty set (impossible), run once.
-	 * useEffect(fn, [a, b, c]); Changes to a, b, or c will re-run fn.
-	 *
-	 */
-	useEffect(() => {
+	let fetchData = () => {
 		fetch('http://localhost:8000/movies')
 			.then((response) => {
 				if (response.ok) {
@@ -46,7 +37,7 @@ export default function FetchingDataPromises() {
 			})
 			.then((movies) => setMovies(movies))
 			.catch((error) => console.error('Could not fetch movies:', error));
-	}, []);
+	};
 
 	return (
 		<>
@@ -55,12 +46,22 @@ export default function FetchingDataPromises() {
 					<h4>Fetching data (with promises)</h4>
 				</header>
 			</div>
+			<div className="row mb-2">
+				<div className="col">
+					<button
+						onClick={fetchData}
+						className="btn btn-primary"
+					>
+						Fetch Data
+					</button>
+				</div>
+			</div>
 			<div className="row">
 				<div className="col">
 					{
 						// eslint-disable-next-line multiline-ternary
 						movies.length === 0 ? (
-							<p>Loading movies....</p>
+							<p>Movies have not been loaded yet.</p>
 						) : (
 							<SortableMovieTable
 								columns={columns}
