@@ -1,6 +1,5 @@
 import type React from 'react';
-import type { Movie } from './demos-types';
-import { movies } from '../data/all-data-typed';
+import { type Movie, movies } from '../data/all-data-typed';
 import { useState } from 'react';
 
 export default function FullForm() {
@@ -45,8 +44,8 @@ export function FullFormUncontrolled() {
 		*/
 
 		movie.title = data.get('title') as string;
-		movie.director = data.get('director') as string;
-		movie.writer = [data.get('writer') as string];
+		movie.directors = [data.get('director') as string];
+		movie.writers = [data.get('writer') as string];
 		movie.genres = [data.get('genres') as string];
 		movie.year = Number(data.get('year') as string);
 		movie.rating = Number(data.get('title') as string);
@@ -169,21 +168,41 @@ export function FullFormUncontrolled() {
  * {rating: 3, year: 2022, title: 'Whatever'} is a value OptionalMovieWithoutId
  *
  */
-type MovieWithoutId = Partial<Omit<Movie, 'id'>>;
-export function FullFormControlled() {
+export type MovieWithoutId = Partial<Omit<Movie, 'id'>>;
+interface FullFormControlledProps {
+	submitAction?: (movie: MovieWithoutId) => void;
+	submitButtonLabel?: string;
+}
+
+export function FullFormControlled({ submitAction, submitButtonLabel }: FullFormControlledProps) {
 	let [movie, setMovie] = useState<MovieWithoutId>({});
 
 	let updateMovie: React.FormEventHandler<HTMLInputElement> = (event) => {
 		let field = event.currentTarget.name;
-		let value = event.currentTarget.value;
+		let value: string | string [] | number = event.currentTarget.value;
+
+		if ([
+			'directors', 'writers', 'genres',
+		].includes(field)) {
+			value = value.split(/,\s+/);
+		} else if (['rating', 'year'].includes(field)) {
+			value = Number(value);
+		}
+
 		setMovie({
 			...movie,
 			[field]: value,
 		});
 	};
 
+	let handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+		event.preventDefault();
+		if (submitAction) submitAction(movie);
+		console.log('movie:', movie);
+	};
+
 	return (
-		<form>
+		<form onSubmit={handleSubmit}>
 			<div>
 				<h4>Controlled Movie Form</h4>
 			</div>
@@ -228,10 +247,10 @@ export function FullFormControlled() {
 				</label>
 				<input
 					type="text"
-					name="director"
+					name="directors"
 					id="movie-director"
 					className="form-control"
-					value={movie.director ?? ''}
+					value={movie.directors ?? ''}
 					onChange={updateMovie}
 				/>
 			</div>
@@ -244,10 +263,10 @@ export function FullFormControlled() {
 				</label>
 				<input
 					type="text"
-					name="writer"
+					name="writers"
 					id="movie-writer"
 					className="form-control"
-					value={movie.writer ?? ''}
+					value={movie.writers ?? ''}
 					onChange={updateMovie}
 				/>
 			</div>
@@ -286,10 +305,9 @@ export function FullFormControlled() {
 			<div className="mt-2">
 				<button
 					className="btn btn-danger"
-					type="button"
-					onClick={() => console.log('Movie is:', movie)}
+					type="submit"
 				>
-					Controlled
+					{submitButtonLabel ?? 'Controlled'}
 				</button>
 			</div>
 		</form>
