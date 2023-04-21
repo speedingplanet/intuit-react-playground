@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { orderBy } from 'lodash';
-import './demos.css';
-import type { Movie, SortConfig } from './demos-types';
+import type { SortConfig } from './demos-types';
 import { MovieBody, type MovieTableProps } from './MovieTable';
+import './demos.css';
+import { type Movie } from '../data/all-data-typed';
 
 export default function SortableMovieTable({ movies, columns }: MovieTableProps) {
 	const [sortConfig, setSortConfig] = useState<SortConfig>({

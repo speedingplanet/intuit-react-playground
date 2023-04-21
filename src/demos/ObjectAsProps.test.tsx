@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import ObjectAsProps, { MovieDetails } from './ObjectAsProps';
+import { type Movie } from '../data/all-data-typed';
 
 test('Smoke test', () => {
 	render(<ObjectAsProps />);
@@ -8,12 +9,12 @@ test('Smoke test', () => {
 });
 
 test('Renders a movie with multiple directors correctly', () => {
-	let testMovie = {
+	let testMovie: Movie = {
 		id: 5,
 		title: 'Avengers: Endgame',
 		year: 2019,
-		director: ['Anthony Russo', 'Joe Russo'],
-		writer: [
+		directors: ['Anthony Russo', 'Joe Russo'],
+		writers: [
 			'Christopher Markus', 'Stephen McFeely', 'Stan Lee',
 		],
 		rating: 5,
@@ -27,57 +28,9 @@ test('Renders a movie with multiple directors correctly', () => {
 	expect(titleElement).not.toBeNull();
 	let yearElement = screen.getByText(testMovie.year, { exact: false });
 	expect(yearElement).not.toBeNull();
-	let directorElement = screen.getByText(testMovie.director[0], { exact: false });
+	let directorElement = screen.getByText(testMovie.directors[0], { exact: false });
 	expect(directorElement).not.toBeNull();
 
 	expect(directorElement.textContent)
-		.toContain(testMovie.director.join(', '));
-});
-
-test('Renders a movie with a single director correctly', () => {
-	let testMovie = 	{
-		id: 6,
-		title: 'Spirited Away',
-		year: 2001,
-		director: 'Hayao Miyazaki',
-		writer: ['Hayao Miyazaki'],
-		rating: 5,
-		genres: [
-			'anime', 'fantasy', 'family', 'mystery',
-		],
-	};
-
-	render(<MovieDetails movie={testMovie} />);
-	let titleElement = screen.getByText(testMovie.title, { exact: false });
-	expect(titleElement).not.toBeNull();
-	let yearElement = screen.getByText(testMovie.year, { exact: false });
-	expect(yearElement).not.toBeNull();
-	let directorElement = screen.getByText('Director', { exact: false });
-	expect(directorElement.textContent)
-		.toContain(testMovie.director);
-});
-
-test('Renders a movie with a single director correctly', () => {
-	let testMovie = 	{
-		id: 6,
-		title: 'Spirited Away',
-		year: 2001,
-		director: 'Hayao Miyazaki',
-		writer: ['Hayao Miyazaki'],
-		rating: 5,
-		genres: [
-			'anime', 'fantasy', 'family', 'mystery',
-		],
-	};
-
-	render(<MovieDetails movie={testMovie} />);
-	let titleElement = screen.getByText(testMovie.title, { exact: false });
-	expect(titleElement).not.toBeNull();
-	let yearElement = screen.getByText(testMovie.year, { exact: false });
-	expect(yearElement).not.toBeNull();
-
-	// getByText would fail because the director is also the writer
-	let miyazakiElements = screen.getAllByText(testMovie.director, { exact: false });
-	expect(miyazakiElements)
-		.toHaveLength(2);
+		.toContain(testMovie.directors.join(', '));
 });

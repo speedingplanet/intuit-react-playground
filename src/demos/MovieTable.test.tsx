@@ -1,14 +1,15 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MovieRow } from './MovieTable';
-import type { ColumnConfig, Movie } from './demos-types';
+import { type Movie } from '../data/all-data-typed';
+import type { ColumnConfig } from './demos-types';
 
-let movie = {
+let movie: Movie = {
 	id: 1,
 	title: 'Raiders of the Lost Ark',
 	year: 1981,
-	director: 'Stephen Spielberg',
-	writer: [
+	directors: ['Stephen Spielberg'],
+	writers: [
 		'Lawrence Kasdan', 'George Lucas', 'Philip Kaufman',
 	],
 	rating: 5,
@@ -27,7 +28,7 @@ const columns: Array<ColumnConfig<Movie>> = [
 		label: 'Year',
 	},
 	{
-		field: 'director',
+		field: 'directors',
 		label: 'Director',
 	},
 	{

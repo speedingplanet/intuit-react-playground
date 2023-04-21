@@ -16,6 +16,8 @@ import ControlledVsUncontrolled from './ControlledVsUncontrolled';
 import FetchingDataPromises from './FetchingDataPromises';
 import FetchingDataAsyncAwait from './FetchingDataAsyncAwait';
 import FullForm from './FullForm';
+import FetchingDataReactQuery from './FetchingDataReactQuery';
+import AddAMovie from './AddAMovie';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -161,6 +163,22 @@ routes.set(
 		element: <FetchingDataAsyncAwait />,
 	},
 	'Fetching data using async/await'
+);
+
+routes.set(
+	{
+		path: 'fetching-with-react-query',
+		element: <FetchingDataReactQuery />,
+	},
+	'Fetching data using React Query'
+);
+
+routes.set(
+	{
+		path: 'adding-with-fetch',
+		element: <AddAMovie />,
+	},
+	'Adding data using fetch'
 );
 
 export { routes };

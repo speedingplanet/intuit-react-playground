@@ -49,7 +49,7 @@ export default function FetchingDataAsyncAwait() {
 		<>
 			<div className="row">
 				<header className="col">
-					<h4>Fetching data (with promises)</h4>
+					<h4>Fetching data (with async/await)</h4>
 				</header>
 			</div>
 			<div className="row">
