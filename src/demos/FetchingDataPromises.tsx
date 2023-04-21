@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SortableMovieTable from './SortableMovieTable';
-import type { Movie, ColumnConfig } from './demos-types';
+import type { ColumnConfig } from './demos-types';
+import { type Movie } from '../data/all-data-typed';
 
 let columns: Array<ColumnConfig<Movie>> = [
 	{
@@ -8,7 +9,7 @@ let columns: Array<ColumnConfig<Movie>> = [
 		label: 'Title',
 	},
 	{
-		field: 'director',
+		field: 'directors',
 		label: 'Director',
 	},
 	{
