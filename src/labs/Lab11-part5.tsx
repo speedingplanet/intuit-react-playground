@@ -1,7 +1,6 @@
 import type React from 'react';
 import { useState } from 'react';
-import { students } from '../data/all-data-typed';
-import { type Student } from '../common/common-types';
+import { type Student, students } from '../data/all-data-typed';
 
 /*
 * Part 1: Render an ordered list of studentNames, displaying the first name and last name

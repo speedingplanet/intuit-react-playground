@@ -1,6 +1,6 @@
 import React from 'react';
 import { students } from '../data/all-data-typed';
-import { type Student } from '../common/common-types';
+import { type Student } from '../data/all-data-typed';
 
 type StudentNames = Pick<Student, 'firstName' | 'lastName' | 'id'>;
 

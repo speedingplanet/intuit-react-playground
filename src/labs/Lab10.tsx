@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import type { Student, NoOpFunction } from '../common/common-types';
+import type { NoOpFunction } from '../common/common-types';
+import { type Student } from '../data/all-data-typed';
 
 let words = [
 	'apple', 'banana', 'car', 'dog', 'echo',
