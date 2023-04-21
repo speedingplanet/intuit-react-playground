@@ -2,6 +2,7 @@ import type React from 'react';
 import { useState } from 'react';
 import { students } from '../data/all-data-typed';
 import { type Student } from '../common/common-types';
+import './labs.css';
 
 /*
  * Part 1: Render an ordered list of studentNames, displaying the first name and last name
@@ -372,10 +373,6 @@ interface StudentListProps {
 	latestStudent?: StudentNames;
 }
 
-let latestStudentStyle = {
-	backgroundColor: 'yellow',
-};
-
 export function StudentList({ studentNames, latestStudent }: StudentListProps) {
 	return (
 		<ol>
@@ -384,7 +381,7 @@ export function StudentList({ studentNames, latestStudent }: StudentListProps) {
 			}) => (
 				<li
 					key={id}
-					style={latestStudent && id === latestStudent.id ? latestStudentStyle : {}}
+					className={latestStudent && id === latestStudent.id ? 'item-highlight' : ''}
 				>
 					{firstName} {lastName}
 				</li>
