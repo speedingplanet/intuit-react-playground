@@ -72,6 +72,7 @@
 		],
 		"@typescript-eslint/explicit-function-return-type": ["off"],
 		"@typescript-eslint/no-confusing-void-expression": ["error", { "ignoreArrowShorthand": true }],
+		"@typescript-eslint/no-misused-promises": ["error", {"checksVoidReturn": false}],
 		"@typescript-eslint/promise-function-async": ["off"],
 		"@typescript-eslint/triple-slash-reference": "off",
 		"@typescript-eslint/strict-boolean-expressions": [
