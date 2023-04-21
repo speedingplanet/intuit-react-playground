@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { students } from '../data/all-data-typed';
-import type { Student, NoOpFunction } from '../common/common-types';
+import { type Student, students } from '../data/all-data-typed';
+import type { NoOpFunction } from '../common/common-types';
 
 export default function Lab10() {
 	let [index, setIndex] = useState(0);

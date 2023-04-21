@@ -1,6 +1,6 @@
 import SortableMovieTable from './SortableMovieTable';
-import { movies } from '../data/all-data-typed';
-import type { ColumnConfig, Movie } from './demos-types';
+import { type Movie, movies } from '../data/all-data-typed';
+import type { ColumnConfig } from './demos-types';
 
 const columns: Array<ColumnConfig<Movie>> = [
 	{

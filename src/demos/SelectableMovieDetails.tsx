@@ -1,15 +1,15 @@
+import { type Movie } from '../data/all-data-typed';
 import { type MovieDetailsProps } from './ObjectAsProps';
-import { type Movie } from './demos-types';
 
 type MovieKeys = Array<keyof Movie>;
 
 export default function SelectableMovieDetailsWrapper() {
-	let raiders = {
+	let raiders: Movie = {
 		id: 1,
 		title: 'Raiders of the Lost Ark',
 		year: 1981,
-		director: 'Stephen Spielberg',
-		writer: [
+		directors: ['Stephen Spielberg'],
+		writers: [
 			'Lawrence Kasdan', 'George Lucas', 'Philip Kaufman',
 		],
 		rating: 5,
@@ -19,7 +19,7 @@ export default function SelectableMovieDetailsWrapper() {
 	};
 
 	let fieldsToDisplay: MovieKeys = [
-		'title', 'year', 'director',
+		'title', 'year', 'directors',
 	];
 
 	return (

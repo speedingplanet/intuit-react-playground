@@ -1,12 +1,33 @@
-import { type Student } from '../common/common-types';
+export interface Student {
+	firstName: string;
+	lastName: string;
+	dateOfBirth: string;
+	email: string;
+	phoneNumber: string;
+	city: string;
+	province: string | null;
+	country: string;
+	postalCode: string;
+	id: number;
+}
 
-export const movies = [
+export interface Movie {
+	id: number;
+	title: string;
+	year: number;
+	directors: string[];
+	writers: string[];
+	rating: number;
+	genres: string[];
+}
+
+export const movies: Movie[] = [
 	{
 		id: 1,
 		title: 'Raiders of the Lost Ark',
 		year: 1981,
-		director: 'Stephen Spielberg',
-		writer: [
+		directors: ['Stephen Spielberg'],
+		writers: [
 			'Lawrence Kasdan', 'George Lucas', 'Philip Kaufman',
 		],
 		rating: 5,
@@ -18,8 +39,8 @@ export const movies = [
 		id: 2,
 		title: 'Casablanca',
 		year: 1942,
-		director: 'Michael Curtiz',
-		writer: [
+		directors: ['Michael Curtiz'],
+		writers: [
 			'Julius J. Epstein', 'Philip G. Epstein', 'Howard Koch',
 		],
 		rating: 5,
@@ -31,19 +52,19 @@ export const movies = [
 		id: 3,
 		title: 'Goodfellas',
 		year: 1990,
-		director: 'Martin Scorcese',
-		writer: ['Nicholas Pileggi', 'Martin Scorcese'],
+		directors: ['Martin Scorcese'],
+		writers: ['Nicholas Pileggi', 'Martin Scorcese'],
 		rating: 5,
 		genres: [
-			'mob', 'mafia', 'crime', 'biography', 'crime',
+			'mob', 'mafia', 'crime', 'biography',
 		],
 	},
 	{
 		id: 4,
 		title: 'The Lord of the Rings: The Fellowship of the Ring',
 		year: 2001,
-		director: 'Peter Jackson',
-		writer: [
+		directors: ['Peter Jackson'],
+		writers: [
 			'J.R.R. Tolkien', 'Fran Walsh', 'Philippa Boyens',
 		],
 		rating: 5,
@@ -55,8 +76,8 @@ export const movies = [
 		id: 5,
 		title: 'Avengers: Endgame',
 		year: 2019,
-		director: ['Anthony Russo', 'Joe Russo'],
-		writer: [
+		directors: ['Anthony Russo', 'Joe Russo'],
+		writers: [
 			'Christopher Markus', 'Stephen McFeely', 'Stan Lee',
 		],
 		rating: 5,
@@ -68,14 +89,15 @@ export const movies = [
 		id: 6,
 		title: 'Spirited Away',
 		year: 2001,
-		director: 'Hayao Miyazaki',
-		writer: ['Hayao Miyazaki'],
+		directors: ['Hayao Miyazaki'],
+		writers: ['Hayao Miyazaki'],
 		rating: 5,
 		genres: [
 			'anime', 'fantasy', 'family', 'mystery',
 		],
 	},
 ];
+
 export const students: Student[] = [
 	{
 		firstName: 'Mujtaba',

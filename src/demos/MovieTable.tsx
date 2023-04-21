@@ -1,5 +1,6 @@
 import './demos.css';
-import type { ColumnConfig, Movie } from './demos-types';
+import { type Movie } from '../data/all-data-typed';
+import type { ColumnConfig } from './demos-types';
 
 export interface MovieTableProps {
 	movies: Movie[];
