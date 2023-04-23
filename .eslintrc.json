@@ -80,6 +80,7 @@
 			{ "allowNullableObject": true, "allowNullableBoolean": true, "allowNullableString": true }
 		],
 		"@typescript-eslint/restrict-template-expressions": ["error", { "allowNullish": true }],
+		"n/handle-callback-err": "off",
 		"react/jsx-no-target-blank": "off"
 	},
 	"overrides": [
