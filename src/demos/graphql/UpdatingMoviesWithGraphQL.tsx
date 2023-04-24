@@ -3,7 +3,6 @@ import { type Movie } from '../../data/all-data-typed';
 import {
 	gql, useLazyQuery, useMutation, useQuery
 } from '@apollo/client';
-import _ from 'lodash';
 import { MovieDetails } from '../ObjectAsProps';
 
 /*
@@ -132,9 +131,7 @@ interface PickMovieByTitleProps {
 	selectMovie: (id: number) => void;
 }
 export function PickMovieByTitle({ selectMovie }: PickMovieByTitleProps) {
-	const {
-		loading, error, data,
-	} = useQuery<{ movies: TitleAndId[] }>(GET_TITLES_AND_IDS);
+	const { loading, data } = useQuery<{ movies: TitleAndId[] }>(GET_TITLES_AND_IDS);
 
 	return (
 		<>
