@@ -6,7 +6,10 @@ import DemosManager from './demos/DemosManager';
 import LabsManager from './labs/LabsManager';
 import Home from './Home';
 
+// React Query
 const queryClient = new QueryClient();
+
+// Apollo Client
 const client = new ApolloClient({
 	uri: 'http://localhost:4000',
 	cache: new InMemoryCache(),
@@ -21,7 +24,9 @@ function App() {
 					<hr />
 				</div>
 			</header>
+			{/* Apollo Client's provider component */}
 			<ApolloProvider client={client}>
+				{/* React Query's provider component */}
 				<QueryClientProvider client={queryClient}>
 					<Router>
 						<Routes>

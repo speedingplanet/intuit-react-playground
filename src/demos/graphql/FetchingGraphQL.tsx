@@ -26,7 +26,7 @@ export default function ApolloGraphql() {
 export function RenderGraphql() {
 	const {
 		loading, error, data,
-	} = useQuery<{ movies: Movie[] }>(GET_MOVIES);
+	} = useQuery<{ movies: Array<Partial<Movie>> }>(GET_MOVIES);
 
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error : {error.message}</p>;
