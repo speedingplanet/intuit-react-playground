@@ -172,19 +172,24 @@ export type MovieWithoutId = Partial<Omit<Movie, 'id'>>;
 interface FullFormControlledProps {
 	submitAction?: (movie: MovieWithoutId) => void;
 	submitButtonLabel?: string;
+	formLabel?: string;
 }
 
-export function FullFormControlled({ submitAction, submitButtonLabel }: FullFormControlledProps) {
+export function FullFormControlled({
+	submitAction,
+	submitButtonLabel,
+	formLabel,
+}: FullFormControlledProps) {
 	let [movie, setMovie] = useState<MovieWithoutId>({});
 
 	let updateMovie: React.FormEventHandler<HTMLInputElement> = (event) => {
 		let field = event.currentTarget.name;
-		let value: string | string [] | number = event.currentTarget.value;
+		let value: string | string[] | number = event.currentTarget.value;
 
 		if ([
 			'directors', 'writers', 'genres',
 		].includes(field)) {
-			value = value.split(/,\s+/);
+			value = value.split(/,\s*/);
 		} else if (['rating', 'year'].includes(field)) {
 			value = Number(value);
 		}
@@ -198,13 +203,12 @@ export function FullFormControlled({ submitAction, submitButtonLabel }: FullForm
 	let handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
 		event.preventDefault();
 		if (submitAction) submitAction(movie);
-		console.log('movie:', movie);
 	};
 
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
-				<h4>Controlled Movie Form</h4>
+				<h4>{formLabel ?? 'Controlled Movie Form'}</h4>
 			</div>
 			<div>
 				<label
