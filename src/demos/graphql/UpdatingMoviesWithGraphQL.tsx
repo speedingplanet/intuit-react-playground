@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { FullFormControlled, type MovieWithoutId } from '../FullForm';
 import { type Movie } from '../../data/all-data-typed';
 import {
@@ -63,7 +62,6 @@ const GET_TITLES_AND_IDS = gql`
 `;
 
 export default function UpdatingMoviesWithGraphQL() {
-	const [movieId, setMovieId] = useState<number | undefined>();
 	const [updateMovie, { data: mutationData }] = useMutation(UPDATE_MOVIE);
 	const [getMovieById, { data: movieData }] = useLazyQuery<{ movies: Movie[] }>(GET_MOVIE_BY_ID);
 
@@ -86,18 +84,12 @@ export default function UpdatingMoviesWithGraphQL() {
 		});
 	};
 
-	useEffect(() => {
-		if (movieId) {
-			void getMovieById({ variables: { id: movieId } });
-		}
-	}, [movieId, getMovieById]);
-
 	console.log('fetched movies', movieData);
 
 	return (
 		<section className="row">
 			<div className="col">
-				<PickMovieByTitle selectMovie={(id) => setMovieId(id)} />
+				<PickMovieByTitle selectMovie={(id) => getMovieById({ variables: { id } })} />
 				<FullFormControlled
 					submitAction={handleSubmitAction}
 					submitButtonLabel="Update movie"
