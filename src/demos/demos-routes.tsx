@@ -18,7 +18,7 @@ import FetchingDataAsyncAwait from './FetchingDataAsyncAwait';
 import FullForm from './FullForm';
 import FetchingDataReactQuery from './FetchingDataReactQuery';
 import AddAMovie from './AddAMovie';
-import ApolloGraphql from './ApolloGraphql';
+import FetchingGraphQL from './graphql/FetchingGraphQL';
 import FetchingDataOnClick from './FetchingDataWithButton';
 
 let routes = new Map<RouteObject, string>();
@@ -185,18 +185,18 @@ routes.set(
 
 routes.set(
 	{
-		path: 'apollo-graphql',
-		element: <ApolloGraphql />,
-	},
-	'Fetching data with Apollo'
-);
-
-routes.set(
-	{
 		path: 'adding-with-fetch',
 		element: <AddAMovie />,
 	},
 	'Adding data using fetch'
+);
+
+routes.set(
+	{
+		path: 'apollo-graphql',
+		element: <FetchingGraphQL />,
+	},
+	'GraphQL: Fetching data with Apollo'
 );
 
 export { routes };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
-import { type Movie } from '../data/all-data-typed';
+import { type Movie } from '../../data/all-data-typed';
 
 const GET_MOVIES = gql`
 	query GetMovies {
