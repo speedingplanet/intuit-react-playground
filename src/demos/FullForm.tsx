@@ -224,7 +224,8 @@ export function FullFormControlled({
 					name="title"
 					id="movie-title"
 					className="form-control"
-					value={movie.title ?? movieToEdit?.title}
+					defaultValue={movieToEdit?.title}
+					value={movie.title}
 					onChange={updateMovie}
 				/>
 			</div>
@@ -240,7 +241,8 @@ export function FullFormControlled({
 					name="year"
 					id="movie-year"
 					className="form-control"
-					value={movie.year ?? movieToEdit?.year}
+					defaultValue={movieToEdit?.year}
+					value={movie.year}
 					onChange={updateMovie}
 				/>
 			</div>
@@ -256,7 +258,8 @@ export function FullFormControlled({
 					name="directors"
 					id="movie-director"
 					className="form-control"
-					value={movie.directors ?? movieToEdit?.directors}
+					defaultValue={movieToEdit?.directors}
+					value={movie.directors}
 					onChange={updateMovie}
 				/>
 			</div>
@@ -272,7 +275,8 @@ export function FullFormControlled({
 					name="writers"
 					id="movie-writer"
 					className="form-control"
-					value={movie.writers ?? movieToEdit?.writers}
+					defaultValue={movieToEdit?.writers}
+					value={movie.writers}
 					onChange={updateMovie}
 				/>
 			</div>
@@ -288,7 +292,8 @@ export function FullFormControlled({
 					name="rating"
 					id="movie-rating"
 					className="form-control"
-					value={movie.rating ?? movieToEdit?.rating}
+					defaultValue={movieToEdit?.rating}
+					value={movie.rating}
 					onChange={updateMovie}
 				/>
 			</div>
@@ -304,7 +309,8 @@ export function FullFormControlled({
 					name="genres"
 					id="movie-genres"
 					className="form-control"
-					value={movie.genres ?? movieToEdit?.genres}
+					defaultValue={movieToEdit?.genres}
+					value={movie.genres}
 					onChange={updateMovie}
 				/>
 			</div>

@@ -3,6 +3,7 @@ import { type Movie } from '../../data/all-data-typed';
 import {
 	gql, useLazyQuery, useMutation, useQuery
 } from '@apollo/client';
+import _ from 'lodash';
 import { MovieDetails } from '../ObjectAsProps';
 
 /*
@@ -65,16 +66,33 @@ export default function UpdatingMoviesWithGraphQL() {
 	const [updateMovie, { data: mutationData }] = useMutation(UPDATE_MOVIE);
 	const [getMovieById, { data: movieData }] = useLazyQuery<{ movies: Movie[] }>(GET_MOVIE_BY_ID);
 
+	/*
+	Receives a Partial<Movie> with ONLY the updates. For example, if we update the rating
+	then it receives this: {rating: 4}. Importantly, NO ID.
+	*/
 	const handleSubmitAction = async (movieUpdates: MovieWithoutId) => {
-		let updatedMovie = {
-			...movieData?.movies[0],
+		// We want to merge the original movie we received from Apollo/GraphQL
+		// We don't want any GraphQL specific fields like __typename
+
+		let graphQLMovie = movieData?.movies[0];
+		let mergedMovie = {
+			...graphQLMovie,
 			...movieUpdates,
 		};
 
-		let id = updatedMovie.id;
+		/*
+		 The updated movie object can't have an id and can't have a __typename
+		 The __typename comes from the fact that we merged a graphQL version of Movie,
+		 which always includes __typename.
 
-		delete updatedMovie.__typename;
-		delete updatedMovie.id;
+		 So we pull out id (which we want), and __typename (which we don't) and
+		 shallow copy the rest of mergedMovie into updatedMovie
+		 */
+		let {
+			// @ts-expect-error __typename does exist because GraphQL
+			// eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/no-unused-vars
+			id, __typename, ...updatedMovie
+		} = mergedMovie;
 
 		await updateMovie({
 			variables: {
@@ -84,27 +102,26 @@ export default function UpdatingMoviesWithGraphQL() {
 		});
 	};
 
-	console.log('fetched movies', movieData);
-
 	return (
 		<section className="row">
 			<div className="col">
 				<PickMovieByTitle selectMovie={(id) => getMovieById({ variables: { id } })} />
-				<FullFormControlled
-					submitAction={handleSubmitAction}
-					submitButtonLabel="Update movie"
-					formLabel="Updating a movie"
-					movieToEdit={movieData?.movies[0]}
-				/>
+				{/* Only display the form, when the user has selected a movie to edit */}
+				{movieData
+					? (
+						<FullFormControlled
+							submitAction={handleSubmitAction}
+							submitButtonLabel="Update movie"
+							formLabel="Updating a movie"
+							movieToEdit={movieData.movies[0]}
+						/>
+					)
+					: (<p></p>)}
 			</div>
 			<div className="col">
 				{mutationData?.updateMovie
-					? (
-						<MovieDetails movie={mutationData.updateMovie} />
-					)
-					: (
-						<p>No updates yet</p>
-					)}
+					? (<MovieDetails movie={mutationData.updateMovie} />)
+					: (<p>No updates yet</p>)}
 			</div>
 		</section>
 	);
