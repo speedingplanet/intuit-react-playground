@@ -173,12 +173,14 @@ interface FullFormControlledProps {
 	submitAction?: (movie: MovieWithoutId) => void;
 	submitButtonLabel?: string;
 	formLabel?: string;
+	movieToEdit?: Movie;
 }
 
 export function FullFormControlled({
 	submitAction,
 	submitButtonLabel,
 	formLabel,
+	movieToEdit,
 }: FullFormControlledProps) {
 	let [movie, setMovie] = useState<MovieWithoutId>({});
 
@@ -222,6 +224,7 @@ export function FullFormControlled({
 					name="title"
 					id="movie-title"
 					className="form-control"
+					defaultValue={movieToEdit?.title}
 					value={movie.title ?? ''}
 					onChange={updateMovie}
 				/>
@@ -238,6 +241,7 @@ export function FullFormControlled({
 					name="year"
 					id="movie-year"
 					className="form-control"
+					defaultValue={movieToEdit?.year}
 					value={movie.year ?? ''}
 					onChange={updateMovie}
 				/>
@@ -254,6 +258,7 @@ export function FullFormControlled({
 					name="directors"
 					id="movie-director"
 					className="form-control"
+					defaultValue={movieToEdit?.directors.join(', ')}
 					value={movie.directors ?? ''}
 					onChange={updateMovie}
 				/>
@@ -270,6 +275,7 @@ export function FullFormControlled({
 					name="writers"
 					id="movie-writer"
 					className="form-control"
+					defaultValue={movieToEdit?.writers.join(', ')}
 					value={movie.writers ?? ''}
 					onChange={updateMovie}
 				/>
@@ -286,6 +292,7 @@ export function FullFormControlled({
 					name="rating"
 					id="movie-rating"
 					className="form-control"
+					defaultValue={movieToEdit?.rating}
 					value={movie.rating ?? ''}
 					onChange={updateMovie}
 				/>
@@ -302,6 +309,7 @@ export function FullFormControlled({
 					name="genres"
 					id="movie-genres"
 					className="form-control"
+					defaultValue={movieToEdit?.genres.join(', ')}
 					value={movie.genres ?? ''}
 					onChange={updateMovie}
 				/>
