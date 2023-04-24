@@ -22,6 +22,7 @@ import FetchingGraphQL from './graphql/FetchingGraphQL';
 import FetchingDataOnClick from './FetchingDataWithButton';
 import FetchingGraphQLWithParameters from './graphql/FetchingGraphQLWithParameters';
 import AddingMoviesWithGraphQL from './graphql/AddingMoviesWithGraphQL';
+import UpdatingMoviesWithGraphQL from './graphql/UpdatingMoviesWithGraphQL';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -215,6 +216,14 @@ routes.set(
 		element: <AddingMoviesWithGraphQL />,
 	},
 	'GraphQL: Add a movie'
+);
+
+routes.set(
+	{
+		path: 'graphql-update-movie',
+		element: <UpdatingMoviesWithGraphQL />,
+	},
+	'GraphQL: Update a movie'
 );
 
 export { routes };

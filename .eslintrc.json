@@ -37,6 +37,7 @@
 		"indent": "off",
 		"@typescript-eslint/indent": ["warn", "tab", { "SwitchCase": 1 }],
 		"max-len": ["warn", { "code": 100, "comments": 120 }],
+		"multiline-ternary": ["error", "always-multiline"],
 		"newline-per-chained-call": ["warn", { "ignoreChainWithDepth": 1 }],
 		"no-tabs": ["off"],
 		"@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "React" }],
@@ -75,10 +76,7 @@
 		"@typescript-eslint/no-misused-promises": ["error", {"checksVoidReturn": false}],
 		"@typescript-eslint/promise-function-async": ["off"],
 		"@typescript-eslint/triple-slash-reference": "off",
-		"@typescript-eslint/strict-boolean-expressions": [
-			"error",
-			{ "allowNullableObject": true, "allowNullableBoolean": true, "allowNullableString": true }
-		],
+		"@typescript-eslint/strict-boolean-expressions": "off",
 		"@typescript-eslint/restrict-template-expressions": ["error", { "allowNullish": true }],
 		"n/handle-callback-err": "off",
 		"react/jsx-no-target-blank": "off"
