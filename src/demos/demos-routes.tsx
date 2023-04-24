@@ -20,6 +20,7 @@ import FetchingDataReactQuery from './FetchingDataReactQuery';
 import AddAMovie from './AddAMovie';
 import FetchingGraphQL from './graphql/FetchingGraphQL';
 import FetchingDataOnClick from './FetchingDataWithButton';
+import FetchingGraphQLWithParameters from './graphql/FetchingGraphQLWithParameters';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -197,6 +198,14 @@ routes.set(
 		element: <FetchingGraphQL />,
 	},
 	'GraphQL: Fetching data with Apollo'
+);
+
+routes.set(
+	{
+		path: 'graphql-with-params',
+		element: <FetchingGraphQLWithParameters />,
+	},
+	'GraphQL: Fetching data with parameters'
 );
 
 export { routes };
