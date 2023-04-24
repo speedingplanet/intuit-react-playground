@@ -224,8 +224,11 @@ export function FullFormControlled({
 					name="title"
 					id="movie-title"
 					className="form-control"
-					defaultValue={movieToEdit?.title}
-					value={movie.title}
+					// movie.title will be undefined at first which will throw an error
+					// when we try to edit that field (uncontrolled -> controlled component)
+					// Fall back to movieToEdit.title when movie.title is blank, which should
+					// prevent errors and warnings
+					value={movie.title ?? movieToEdit?.title ?? ''}
 					onChange={updateMovie}
 				/>
 			</div>
@@ -241,8 +244,7 @@ export function FullFormControlled({
 					name="year"
 					id="movie-year"
 					className="form-control"
-					defaultValue={movieToEdit?.year}
-					value={movie.year}
+					value={movie.year ?? movieToEdit?.year ?? ''}
 					onChange={updateMovie}
 				/>
 			</div>
@@ -258,8 +260,7 @@ export function FullFormControlled({
 					name="directors"
 					id="movie-director"
 					className="form-control"
-					defaultValue={movieToEdit?.directors}
-					value={movie.directors}
+					value={movie.directors ?? movieToEdit?.directors ?? ''}
 					onChange={updateMovie}
 				/>
 			</div>
@@ -275,8 +276,7 @@ export function FullFormControlled({
 					name="writers"
 					id="movie-writer"
 					className="form-control"
-					defaultValue={movieToEdit?.writers}
-					value={movie.writers}
+					value={movie.writers ?? movieToEdit?.writers ?? ''}
 					onChange={updateMovie}
 				/>
 			</div>
@@ -292,8 +292,7 @@ export function FullFormControlled({
 					name="rating"
 					id="movie-rating"
 					className="form-control"
-					defaultValue={movieToEdit?.rating}
-					value={movie.rating}
+					value={movie.rating ?? movieToEdit?.rating ?? ''}
 					onChange={updateMovie}
 				/>
 			</div>
@@ -309,8 +308,7 @@ export function FullFormControlled({
 					name="genres"
 					id="movie-genres"
 					className="form-control"
-					defaultValue={movieToEdit?.genres}
-					value={movie.genres}
+					value={movie.genres ?? movieToEdit?.genres ?? ''}
 					onChange={updateMovie}
 				/>
 			</div>
